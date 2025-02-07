@@ -1,0 +1,7 @@
+19. Futárszolgálat szimuláció
+
+Egy csomagküldő rendszer modellezése.
+
+    Objektumok: Csomag, Futár, Célállomás, Szállítójármű.
+    Működés: A csomagokat felveszik, kiszállítják a célállomásra, a futárok útvonalat optimalizálnak.
+    Bővítés: Sürgős szállítások kezelése, üzemanyagfogyasztás figyelése.
