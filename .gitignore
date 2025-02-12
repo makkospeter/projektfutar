@@ -1,6 +1,5 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/futarszolgalat/.vs
-/.vs/projektfutar/v17
+*/bin/
+*/obj/  
+*.obj
+*.bin
+.vs/

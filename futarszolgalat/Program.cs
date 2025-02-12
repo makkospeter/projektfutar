@@ -1,10 +1,17 @@
 ﻿namespace futarszolgalat
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Futar futar = new Futar("Kiss Péter");
+            Csomag cs1 = new Csomag("CS001", "Budapest");
+            Csomag cs2 = new Csomag("CS002", "Debrecen");
+
+            futar.FelveszCsomag(cs1);
+            futar.FelveszCsomag(cs2);
+
+            futar.Kiszallit();
         }
     }
 }
