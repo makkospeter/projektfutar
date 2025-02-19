@@ -9,12 +9,12 @@ namespace futarszolgalat
     internal class Csomag
     {
         public string Azonosito { get; }
-        public string Celallomas { get; }
+        public Celallomas Cel { get; }
 
-        public Csomag(string azonosito, string celallomas)
+        public Csomag(string azonosito, Celallomas cel)
         {
             Azonosito = azonosito;
-            Celallomas = celallomas;
+            Cel = cel;
         }
     }
 }

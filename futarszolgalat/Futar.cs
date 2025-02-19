@@ -8,27 +8,24 @@ namespace futarszolgalat
 {
     internal class Futar
     {
-        public string Nev { get; }
+        public string FutarNev { get; }
         private List<Csomag> Csomagok = new List<Csomag>();
 
         public Futar(string nev)
         {
-            Nev = nev;
+            FutarNev = nev;
         }
 
-        public void FelveszCsomag(Csomag csomag)
-        {
-            Csomagok.Add(csomag);
-            Console.WriteLine($"{Nev} felvette a(z) {csomag.Azonosito} csomagot.");
-        }
-
-        public void Kiszallit()
-        {
-            foreach (var csomag in Csomagok)
-            {
-                Console.WriteLine($"{Nev} kiszállította a(z) {csomag.Azonosito} csomagot a {csomag.Celallomas} célállomásra.");
-            }
-            Csomagok.Clear();
-        }
+        //public string NEV(string nev) 
+        //{
+        //    if(nev == null)
+        //    {
+        //        return (null);
+        //    }
+        //    else
+        //    {
+        //        return(nev);
+        //    }
+        //}
     }
 }

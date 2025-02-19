@@ -1,17 +1,119 @@
-﻿namespace futarszolgalat
+﻿using futarszolgalat;
+
+Futar? loggedInFutar = null;
+
+Celallomas budapest = new Celallomas("Budapest");
+Celallomas debrecen = new Celallomas("Debrecen");
+Celallomas szeged = new Celallomas("Szeged");
+
+Szallitojarmu auto = new Szallitojarmu("ABC-123", 50);
+
+
+
+while (true)
 {
-    class Program
+    Console.Clear();
+    Console.WriteLine("1. Csomag felvétele\n2. Kiszállítás\n3. Tankolás\n4. Üzemanyagszint\n5. Bejelentkezés\n6. Profil megtekintése\n0. Kilépés");
+    Console.Write("Válassz egy opciót: ");
+    string valasztas = Console.ReadLine();
+
+    switch (valasztas)
     {
-        static void Main(string[] args)
-        {
-            Futar futar = new Futar("Kiss Péter");
-            Csomag cs1 = new Csomag("CS001", "Budapest");
-            Csomag cs2 = new Csomag("CS002", "Debrecen");
+        case "1":
+            Console.WriteLine("");
+            Console.Write("Célállomás neve: ");
+            string celNev = Console.ReadLine();
+            Celallomas cel = new Celallomas(celNev);
+            Csomag ujCsomag = new Csomag("CS" + new Random().Next(100, 999), cel);
+            auto.FelveszCsomagot(ujCsomag);
+            Console.WriteLine("Csomag felvéve!");
+            Console.WriteLine("");
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            break;
 
-            futar.FelveszCsomag(cs1);
-            futar.FelveszCsomag(cs2);
+        case "2":
+            Console.WriteLine("");
+            try
+            {
+                if (auto.Kiszallit())
+                    Console.WriteLine("Sikeres kiszállítás!");
+                else
+                {
+                    Console.WriteLine("Nincs elég üzemanyag a kiszállításhoz!");
+                }
+            }
+            catch (Exception i)
+            {
+                Console.WriteLine(i.Message);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            break;
 
-            futar.Kiszallit();
-        }
+
+
+        case "3":
+            Console.WriteLine("");
+            Console.Write("Mennyi üzemanyagot tankol?: ");
+            double mennyiseg = double.Parse(Console.ReadLine());
+            try
+            {
+                auto.Tankol(mennyiseg);
+                Console.WriteLine("Tankolás sikeres!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            break;
+
+        case "4":
+            Console.WriteLine("");
+            Console.WriteLine($"Az üzemanyag szintje jelenleg: {auto.UzemanyagSzint}L ({Math.Round((auto.UzemanyagSzint / 50) * 100, 1)}%)");
+            Console.WriteLine("");
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            break;
+
+        case "5":
+            Console.WriteLine("");
+            Console.Write("Adja meg a nevét: ");
+            string nev = Console.ReadLine();
+            loggedInFutar = new Futar(nev);
+            Console.WriteLine("Bejelentkezett!");
+            Console.WriteLine("");
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            break;
+
+        case "6":
+            string adat = loggedInFutar.FutarNev; 
+            Console.WriteLine("");
+            if (adat != null)
+            {
+                Console.WriteLine($"{adat} vezeti jelenleg a futárautót.");
+            }
+            else
+            {
+                Console.WriteLine("Jelenleg nincs bejelentkezve senki.");
+            }
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            break;
+
+        case "0":
+            Console.WriteLine("");
+            Console.WriteLine("Tovább...");
+            Console.ReadLine();
+            return;
+
+        default:
+            Console.WriteLine("Érvénytelen opció!");
+            break;
     }
 }
