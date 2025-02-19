@@ -13,7 +13,7 @@ Szallitojarmu auto = new Szallitojarmu("ABC-123", 50);
 while (true)
 {
     Console.Clear();
-    Console.WriteLine("1. Csomag felvétele\n2. Kiszállítás\n3. Tankolás\n4. Üzemanyagszint\n5. Bejelentkezés\n6. Profil megtekintése\n0. Kilépés");
+    Console.WriteLine("1. Csomag felvétele\n2. Kiszállítás\n3. Tankolás\n4. Üzemanyagszint\n5. Bejelentkezés\n6. Profil megtekintése\n0. Kijelentkezés és Kilépés");
     Console.Write("Válassz egy opciót: ");
     string valasztas = Console.ReadLine();
 
@@ -109,7 +109,6 @@ while (true)
         case "0":
             Console.WriteLine("");
             Console.WriteLine("Tovább...");
-            Console.ReadLine();
             return;
 
         default:
